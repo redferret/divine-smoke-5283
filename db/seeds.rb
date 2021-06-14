@@ -5,14 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-@garden = FactoryBot.create(:garden, name: 'My Garden')
-
-@plot_1 = FactoryBot.create(:plot, garden: @garden, number: 1)
-@plant_1 = FactoryBot.create(:plant)
-@plant_2 = FactoryBot.create(:plant)
-@plot_1.plants << @plant_1 << @plant_2
-
-@plot_2 = FactoryBot.create(:plot, garden: @garden, number: 2)
-@plant_3 = FactoryBot.create(:plant)
-@plant_4 = FactoryBot.create(:plant)
-@plot_2.plants << @plant_3 << @plant_4
+2.times do |i|
+    garden = FactoryBot.create(:garden, name: "Garden #{i}")
+    plot_1 = FactoryBot.create(:plot, garden: garden, number: 1)
+    plant_1 = FactoryBot.create(:plant, days_til_harvest: 50, name: "Squash #{i}")
+    plant_2 = FactoryBot.create(:plant, days_til_harvest: 120)
+    plot_1.plants << plant_1 << plant_2
+    plot_2 = FactoryBot.create(:plot, garden: garden, number: 2)
+    plant_3 = FactoryBot.create(:plant, days_til_harvest: 45, name: "Peppers #{i}")
+    plot_2.plants << plant_2 << plant_3
+end
