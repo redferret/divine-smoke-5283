@@ -1,0 +1,14 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Garden Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @gardens.each do |garden| %>
+      <tr>
+        <td><%= link_to garden.name, garden_path(garden), class:'btn btn-link'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
