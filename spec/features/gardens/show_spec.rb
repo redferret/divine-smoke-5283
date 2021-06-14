@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Plant, type: :model do
+RSpec.describe 'The show page for a garden,' do
   before :each do
     @garden = FactoryBot.create(:garden, name: 'My Garden')
 
@@ -12,13 +12,22 @@ RSpec.describe Plant, type: :model do
     @plot_2 = FactoryBot.create(:plot, garden: @garden, number: 2)
     @plant_3 = FactoryBot.create(:plant, days_til_harvest: 45, name: 'Peppers')
     @plot_2.plants << @plant_2 << @plant_3
+
+    visit garden_path(@garden)
   end
 
-  describe 'class method,' do
-    describe '::plants_for_garden' do
-      it 'only shows distinct plant names and plants harvest days less than 100' do
-        expected_result = [@plant_1, @plant_3]
-        expect(Plant.plants_for_garden(@garden.id)).to eq expected_result
+  describe 'plants list,' do
+    it 'only shows distinct plant names' do
+      within '#plants-list' do
+        expect(page).to have_content('Squash', count: 1)
+        expect(page).to have_content('Peppers')
+      end
+    end
+
+    it 'only shows plants that are ready to harvest in less than 100 days' do
+      within '#plants-list' do
+        expect(page).to have_content('50')
+        expect(page).to have_content('45')
       end
     end
   end

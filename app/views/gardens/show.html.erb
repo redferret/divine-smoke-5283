@@ -1,0 +1,18 @@
+<table class='table' id='plants-list'>
+  <thead>
+    <tr>
+      <th>Plant Name</th>
+      <th>Days Until Harvets</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @garden_plants.each do |plant| %>
+      <tr>
+        <td><%= plant.name%></td>
+        <td><%= plant.days_til_harvest%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<h4>Plots for this Garden</h4>
+<%= link_to "View Plots", garden_plots_path(@garden), class:'btn btn-link'%></td>
