@@ -17,50 +17,11 @@ ActiveRecord::Schema.define(version: 2021_06_14_154510) do
 
 
 
-  create_table "actors", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
-    t.boolean "currently_working"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "actors_movies", id: false, force: :cascade do |t|
-    t.bigint "actor_id", null: false
-    t.bigint "movie_id", null: false
-    t.index ["actor_id"], name: "index_actors_movies_on_actor_id"
-    t.index ["movie_id"], name: "index_actors_movies_on_movie_id"
-  end
-
   create_table "gardens", force: :cascade do |t|
     t.string "name"
     t.boolean "organic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "mechanics", force: :cascade do |t|
-    t.string "name"
-    t.integer "years_experience"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "mechanics_rides", id: false, force: :cascade do |t|
-    t.bigint "mechanic_id", null: false
-    t.bigint "ride_id", null: false
-    t.index ["mechanic_id"], name: "index_mechanics_rides_on_mechanic_id"
-    t.index ["ride_id"], name: "index_mechanics_rides_on_ride_id"
-  end
-
-  create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.integer "creation_year"
-    t.string "genre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "studio_id"
-    t.index ["studio_id"], name: "index_movies_on_studio_id"
   end
 
   create_table "plants", force: :cascade do |t|
@@ -88,21 +49,5 @@ ActiveRecord::Schema.define(version: 2021_06_14_154510) do
     t.index ["garden_id"], name: "index_plots_on_garden_id"
   end
 
-  create_table "rides", force: :cascade do |t|
-    t.string "name"
-    t.integer "thrill_rating"
-    t.boolean "open"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "studios", force: :cascade do |t|
-    t.string "name"
-    t.string "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "movies", "studios"
   add_foreign_key "plots", "gardens"
 end

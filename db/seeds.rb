@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 @garden = FactoryBot.create(:garden, name: 'My Garden')
 
-    @plot_1 = FactoryBot.create(:plot, garden: @garden, number: 1)
-    @plant_1 = FactoryBot.create(:plant)
-    @plant_2 = FactoryBot.create(:plant)
-    @plot_1.plants << @plant_1 << @plant_2
+@plot_1 = FactoryBot.create(:plot, garden: @garden, number: 1)
+@plant_1 = FactoryBot.create(:plant)
+@plant_2 = FactoryBot.create(:plant)
+@plot_1.plants << @plant_1 << @plant_2
 
-    @plot_2 = FactoryBot.create(:plot, garden: @garden, number: 2)
-    @plant_3 = FactoryBot.create(:plant)
-    @plant_4 = FactoryBot.create(:plant)
-    @plot_2.plants << @plant_3 << @plant_4
+@plot_2 = FactoryBot.create(:plot, garden: @garden, number: 2)
+@plant_3 = FactoryBot.create(:plant)
+@plant_4 = FactoryBot.create(:plant)
+@plot_2.plants << @plant_3 << @plant_4
