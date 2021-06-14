@@ -1,4 +1,5 @@
 class Plant < ApplicationRecord
+  validates_uniqueness_of :name
   has_and_belongs_to_many :plots
 
   def self.plants_for_garden(garden_id)
