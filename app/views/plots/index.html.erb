@@ -1,0 +1,35 @@
+<h4>Plots for garden <%= @garden.name%></h4>
+<table class='table' id='plots-list'>
+  <caption>Plots</caption>
+  <thead>
+    <tr>
+      <th>Plot #</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @plots.each do |plot| %>
+      <tr id='plot-<%=plot.id%>'>
+        <td>Plot #<%= plot.number%></td>
+      </tr>
+      <tr>
+        <td>
+          <table class='table' id='plots-<%=plot.id%>-plants-list'>
+            <caption>Plants</caption>
+            <thead>
+              <tr>
+                <th>Plant Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% plot.plants.each do |plant| %>
+                <tr id='plant-<%=plant.id%>'>
+                  <td><%= plant.name%></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>>
